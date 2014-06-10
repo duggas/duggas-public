@@ -2,6 +2,7 @@
 "use strict";
 
 /**
+ * Author: Bradley Dugdale
  * Creates and returns an instance of a BinarySearchTree.
  * @returns {BST.BinarySearchTree}
  * @constructor
