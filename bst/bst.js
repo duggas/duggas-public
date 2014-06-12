@@ -1,19 +1,77 @@
 
-"use strict";
+
 
 /**
+ * Author: Bradley Dugdale
  * Creates and returns an instance of a BinarySearchTree.
  * @returns {BST.BinarySearchTree}
  * @constructor
  */
 function BST(){
 
+    "use strict";
+
+    /**
+     * Represents a single node in the tree
+     * @param key
+     * @param value
+     * @constructor
+     */
+    function BSTNode(key, value){
+        this.key = key;
+        this.value = value;
+        this.leftChild = undefined;
+        this.rightChild = undefined;
+        this.parentNode = undefined;
+    }
+
+    /**
+     * Prints the node's key and value to the song
+     */
+    BSTNode.prototype.print = function(){
+        console.log(this.key + ":" + this.value);
+    };
+
+    BSTNode.prototype.toString = function(){
+        return this.key + ":" + this.value;
+    };
+
+    /**
+     * Returns true if the given node has any children
+     * @returns {boolean}
+     */
+    BSTNode.prototype.hasChildren = function(){
+        return (this.leftChild !== undefined || this.rightChild !== undefined);
+    };
+
+    /**
+     * A simple integer comparator used for key comparison
+     * @constructor
+     */
+    function IntegerComparator(){}
+
+    /**
+     * Implements the compare method for the IntegerComparator
+     * @param valueOne
+     * @param valueTwo
+     * @returns {number}
+     */
+    IntegerComparator.prototype.compare = function(valueOne, valueTwo){
+        if(valueOne === valueTwo) {
+            return 0;
+        }
+        else if(valueOne < valueTwo){
+            return -1;
+        }
+        return 1;
+    };
+
     /**
      * BinarySearchTree constructor
      * @constructor
      */
     function BinarySearchTree(){
-        var rootNode = undefined;
+        this.rootNode;
         this.comparator = new IntegerComparator();
     }
 
@@ -79,7 +137,8 @@ function BST(){
      * @param deleteVal
      */
     BinarySearchTree.prototype.delete = function(deleteVal){
-        var nodeToDelete = undefined;
+        var nodeToDelete, replacement, replacementParent, parentNode;
+
 
         if(typeof deleteVal === "object"){
             nodeToDelete = deleteVal;
@@ -90,7 +149,7 @@ function BST(){
 
         if(nodeToDelete !== undefined){
 
-            var parentNode = nodeToDelete.parentNode;
+            parentNode = nodeToDelete.parentNode;
 
             if(!nodeToDelete.hasChildren()){
 
@@ -135,8 +194,8 @@ function BST(){
                 }
                 else if(nodeToDelete.leftChild !== undefined && nodeToDelete.rightChild !== undefined){
                     //Two children exist
-                    var replacement =  nodeToDelete.leftChild;
-                    var replacementParent = nodeToDelete;
+                    replacement =  nodeToDelete.leftChild;
+                    replacementParent = nodeToDelete;
 
                     while (replacement.rightChild !== undefined){
                         replacementParent = replacement;
@@ -213,7 +272,7 @@ function BST(){
     };
 
     /**
-     * Prints the tree in order
+     * Prints the tree in order to the console
      */
     BinarySearchTree.prototype.printTree = function(){
         var inOrderTreeValues = this.traverseTree();
@@ -243,10 +302,13 @@ function BST(){
      * @returns {*}
      */
     BinarySearchTree.prototype.traversTreeBreadthFirstInternal = function(nodeArray, resultHolder){
-        var nextNodeRow = [];
-        var thisNodeRow = [];
+        var nextNodeRow, thisNodeRow, i;
 
-        for(var i = 0; i < nodeArray.length; i++){
+        thisNodeRow = [];
+        nextNodeRow = [];
+
+
+        for(i = 0; i < nodeArray.length; i = i + 1){
             /*
             For each node, add it to the result array while also adding
             its left and right children to a new node array holding the next row of nodes
@@ -310,60 +372,7 @@ function BST(){
     };
 
 
-    /**
-     * Represents a single node in the tree
-     * @param key
-     * @param value
-     * @constructor
-     */
-    function BSTNode(key, value){
-        this.key = key;
-        this.value = value;
-        this.leftChild = undefined;
-        this.rightChild = undefined;
-        this.parentNode = undefined;
-    }
 
-    /**
-     * Prints the node's key and value to the song
-     */
-    BSTNode.prototype.print = function(){
-        console.log(this.key + ":" + this.value);
-    };
-
-    BSTNode.prototype.toString = function(){
-        return this.key + ":" + this.value;
-    };
-
-    /**
-     * Returns true if the given node has any children
-     * @returns {boolean}
-     */
-    BSTNode.prototype.hasChildren = function(){
-        return (this.leftChild !== undefined || this.rightChild != undefined);
-    };
-
-    /**
-     * A simple integer comparator used for key comparison
-     * @constructor
-     */
-    function IntegerComparator(){}
-
-    /**
-     * Implements the compare method for the IntegerComparator
-     * @param valueOne
-     * @param valueTwo
-     * @returns {number}
-     */
-    IntegerComparator.prototype.compare = function(valueOne, valueTwo){
-        if(valueOne === valueTwo) {
-            return 0;
-        }
-        else if(valueOne < valueTwo){
-            return -1;
-        }
-        return 1;
-    };
 
     return new BinarySearchTree();
 
