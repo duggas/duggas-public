@@ -240,7 +240,6 @@ function CreateLinkedList(){
      * Does a simple print of the list
      */
     LinkedList.prototype.print = function(){
-
         if(this.first !== undefined){
             var nodeToPrint = this.first;
             while(nodeToPrint !== undefined){
@@ -259,7 +258,6 @@ function CreateLinkedList(){
      */
     LinkedList.prototype.printNode = function(node){
         console.log(node);
-
     };
 
     /**
@@ -274,4 +272,4 @@ function CreateLinkedList(){
 }
 
 
-//module.exports.CreateLinkedList = CreateLinkedList;
+module.exports.CreateLinkedList = CreateLinkedList;

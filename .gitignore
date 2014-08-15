@@ -20,3 +20,7 @@ duggas-public.iml
 .idea/modules.xml
 
 .idea/compiler.xml
+
+queue/queue-test.js
+
+linkedlist/linked-list-test.js
