@@ -370,11 +370,8 @@ function BST(){
 
         return resultHolder;
     };
-
-
-
-
     return new BinarySearchTree();
-
-
 }
+
+
+module.exports.BST = BST;
