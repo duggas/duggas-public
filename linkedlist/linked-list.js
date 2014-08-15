@@ -1,4 +1,5 @@
 /**
+ * Author: Bradley Dugdale
  * Creates and returns an instance of a doubly-linked list
  * @returns {CreateLinkedList.LinkedList}
  * @constructor

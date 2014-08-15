@@ -1,4 +1,5 @@
 /**
+ * Author: Bradley Dugdale
  * A simple queue implementation
  * @returns {CreateQueue.Queue}
  * @constructor
@@ -8,7 +9,6 @@ function CreateQueue(){
     function Node(value){
         this.value = value;
         this.next = undefined;
-        this.last = undefined;
     }
 
     Node.prototype.print = function(){
@@ -21,6 +21,7 @@ function CreateQueue(){
      */
     function Queue(){
         this.first = undefined;
+        this.last = undefined;
         this.size = 0;
     }
 
