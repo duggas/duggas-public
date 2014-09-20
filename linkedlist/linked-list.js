@@ -231,6 +231,8 @@ function CreateLinkedList(){
                 nodeToRemove.previous.next = nodeToRemove.next;
                 nodeToRemove.next.previous = nodeToRemove.previous;
             }
+
+            this.count = this.count - 1;
         }
         else {
             //Element wasn't in list

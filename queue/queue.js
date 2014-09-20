@@ -43,7 +43,7 @@ function CreateQueue(){
     };
 
     /**
-     * Peeks at te next item in the queue
+     * Peeks at the next item in the queue
      * @returns {*}
      */
     Queue.prototype.peek = function(){
