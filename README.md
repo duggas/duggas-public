@@ -1,4 +1,4 @@
 duggas-public
 =============
 
-Some simple Javascript implementations of some data structures.
+Some simple Javascript implementations of basic data structures.
